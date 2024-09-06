@@ -1,3 +1,6 @@
+package com.chess.engine.board;
+import com.chess.engine.pieces.Piece;
+
 public final class OccupiedTile extends Tile {
 
     Piece pieceOnTile; // Declare the variable which signifies which piece is on the tile

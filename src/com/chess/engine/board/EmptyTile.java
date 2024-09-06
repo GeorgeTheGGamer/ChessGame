@@ -1,3 +1,6 @@
+package com.chess.engine.board;
+import com.chess.engine.pieces.Piece;
+
 public final class EmptyTile extends Tile { // Subclass of Tile, final and so cant change
     EmptyTile(int coordinate) { // Create the empty tile constructor
         super(coordinate);  // Since inheriting the methods from the tile class, the coordinate was already declared so

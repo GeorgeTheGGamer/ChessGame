@@ -1,6 +1,11 @@
-
+package com.chess.engine.board;
+import com.chess.engine.pieces.Piece;
 // Chess Board has 64 tiles
 // Abstract class - "Tile" is too vague and so make abstract, also adds extra layer of security
+// Meaning that because this class is abstract we cannot instantiate it but can instantiate its
+//  subclasses as long as they implement the abstract classes methods. So not a concrete method
+// So cant say Tile tile = new Tile();, must instantiate a concrete subclass of it
+
 public abstract class Tile { // Parent class of EmptyTile
 
     // Introducing a member field which represents the tile number
