@@ -13,13 +13,18 @@ public abstract class Piece { // Abstract since there is not only one piece, the
     // Start by saying that every piece has a piece position,
     // a tile coordinate that is occupied on
 
-    protected final int piecePosition;
+    protected final int piecePosition; // The position of the piece on the board
     protected final Alliance pieceAlliance; // Whether it is white or black, but can also be using for what player it is
 
     Piece(final int piecePosition, final Alliance pieceAlliance) {
+
         this.pieceAlliance = pieceAlliance;
         this.piecePosition = piecePosition;
 
+    }
+
+    public Alliance getPieceAlliance() { // Getter method for the Alliance of this piece
+        return this.pieceAlliance; // Returns the alliance of the piece when called upon
     }
 
     // Most important method in this class is calculating the legal moves of a piece
