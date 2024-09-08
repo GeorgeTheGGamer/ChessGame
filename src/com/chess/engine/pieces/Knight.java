@@ -2,6 +2,7 @@ package com.chess.engine.pieces;
 
 import com.chess.engine.Alliance; // Importing the enum, either white or black alliance
 import com.chess.engine.board.Board; // Importing board
+import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class Knight extends Piece{ // Knight inherits the Piece class
             // Applying the offset, whether positive or negative to the current position
             candidateDestinationCoordinate = this.piecePosition + currentCandidate; // Position value
 
-            if(true /*isValidTileCoordinate*/) { // So within the bounds of the board, 0-63
+            if(BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) { // If the destination is within the bounds of the chess board
 
                 // Declare new variable which uses the tile class, and gets the tile from the candidate destination
                 // coordinate on the board
@@ -57,4 +58,14 @@ public class Knight extends Piece{ // Knight inherits the Piece class
         }
         return Collections.unmodifiableList(legalMoves); // Cannot be changed after initialisation
     }
+
+    // It turns out that when on the edges of the board, this notion breaks down and the moves are not legal
+
+    // All edge cases ran into if the knight were sitting on the first column of the chess board
+    private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset) {
+        // Introduce an array of booleans in board utils, this array we're going to call first column
+        // If the current position falls within the current position of the chess board and the offset
+        return BoardUtils.FIRST_COLUMN[currentPosition] && ((candidateOffset == -17) || (candidateOffset == -10) || (candidateOffset == 6) || candidateOffset == 15);
+    }
+
 }
