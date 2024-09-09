@@ -31,7 +31,7 @@ public abstract class Tile { // Parent class of EmptyTile
         /*This method constructs a map of empty tiles, with each tile corresponding to a unique coordinate
         (0 to 63, representing an 8x8 board). Each tile is created once and stored in the map*/
         final Map<Integer, EmptyTile> emptyTileMap = new HashMap<>();
-        for(int i=0; i<64; i++) {
+        for(int i=0; i<BoardUtils.NUM_TILES; i++) {
             emptyTileMap.put(i, new EmptyTile(i));
         }
         return Collections.unmodifiableMap(emptyTileMap); // After Constructed don't want anyone to be able to change it.
@@ -48,7 +48,7 @@ public abstract class Tile { // Parent class of EmptyTile
         return piece != null ? new OccupiedTile(tileCoordinate, piece) : EMPTY_TILES_CACHE.get(tileCoordinate);
     }
 
-    private Tile(int tileCoordinate) { // Only accessible in this class
+    private Tile(final int tileCoordinate) { // Only accessible in this class
         this.tileCoordinate = tileCoordinate; // When constructing a new tile, it will be assigned a tile coordinate
     }
 
@@ -70,7 +70,7 @@ public abstract class Tile { // Parent class of EmptyTile
         // And make class private - No way to reference this variable outside without a getter
         private final Piece pieceOnTile; // Declare the variable which signifies which piece is on the tile
 
-        private OccupiedTile(int coordinate, Piece pieceOnTile) {
+        private OccupiedTile(int coordinate, final Piece pieceOnTile) {
             super(coordinate); // Super class constructor
             this.pieceOnTile = pieceOnTile; // Construct this variable
 

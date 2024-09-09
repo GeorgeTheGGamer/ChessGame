@@ -5,6 +5,7 @@ import com.chess.engine.board.Board; // Importing board
 import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
+import static com.chess.engine.board.Move.*; // allows you to use the static members of the Move class
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +24,7 @@ public class Knight extends Piece{ // Knight inherits the Piece class
     }
 
     @Override
-    public Collection<Move> calculateLegalMoves(Board board){
+    public Collection<Move> calculateLegalMoves(final Board board){
 
         // Will use a list but the caller of this method will not be able to rely on hat behaviour
         final List<Move> legalMoves = new ArrayList<>(); // List of all the legal moves for this piece
@@ -53,7 +54,7 @@ public class Knight extends Piece{ // Knight inherits the Piece class
                 // Now that we have that specific tile
                 if (!candidateDestinationTile.isTileOccupied()) {
                     // This is a neutral move
-                    legalMoves.add(new Move()); // Placeholder for now
+                    legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate)); // Placeholder for now
 
                 } else {
 
@@ -63,7 +64,7 @@ public class Knight extends Piece{ // Knight inherits the Piece class
 
                     if (this.pieceAlliance != pieceAlliance) {// Signifies that the piece on that coordinate is an enemy piece
                         // This is an attacking move
-                        legalMoves.add(new Move()); // Adds this as a legal move to the list
+                        legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination )); // Adds this as a legal move to the list
                 }
             }
 
