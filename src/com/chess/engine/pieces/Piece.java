@@ -2,7 +2,8 @@ package com.chess.engine.pieces;
 import com.chess.engine.Alliance;
 import com.chess.engine.board.Board;
 import com.chess.engine.board.Move;
-import java.util.List;
+
+import java.util.Collection;
 
 // Defined the piece class with one abstract method legal moves, and all the pieces we are creating will override
 // this and have their own legal behaviour it can take, like a knight and a bishop have very different moves.
@@ -29,7 +30,10 @@ public abstract class Piece { // Abstract since there is not only one piece, the
 
     // Most important method in this class is calculating the legal moves of a piece
 
-    public abstract List<Move> calculateLegalMoves (final Board board);  // This will return a collection of moves, either a set or collection
+    // In summary using a set, this cannot have any duplicate entries within it and unordered
+    // While a list in ordered, and you can get values at a certain index
+    // So now whoever calls this method it is unspecified, it is just a collection
+    public abstract Collection<Move> calculateLegalMoves (final Board board);  // This will return a collection of moves, either a set or collection
 
 
 

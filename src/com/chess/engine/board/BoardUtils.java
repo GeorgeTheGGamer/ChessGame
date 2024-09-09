@@ -7,6 +7,9 @@ public class BoardUtils {
     // List of booleans for each tile in the first tile of the chess board all true
     // Then all other tiles will be set to false because we're only caring about the first column currently
     public static final boolean[] FIRST_COLUMN = null; // Placeholder for now
+    public static final boolean[] SECOND_COLUMN = null;
+    public static final boolean[] SEVENTH_COLUMN = null;
+    public static final boolean[] EIGHTH_COLUMN = null;
 
     private BoardUtils() {
         throw new RuntimeException("You cannot instantiate this!!!"); // Prevents from instantiating this class
