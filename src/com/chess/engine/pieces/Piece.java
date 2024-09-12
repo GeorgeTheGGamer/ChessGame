@@ -16,11 +16,13 @@ public abstract class Piece { // Abstract since there is not only one piece, the
 
     protected final int piecePosition; // The position of the piece on the board
     protected final Alliance pieceAlliance; // Whether it is white or black, but can also be using for what player it is
-
+    protected final boolean isFirstMove;
     Piece(final int piecePosition, final Alliance pieceAlliance) {
 
         this.pieceAlliance = pieceAlliance;
         this.piecePosition = piecePosition;
+        // TODO More work here
+        this.isFirstMove = false;
 
     }
 
@@ -28,6 +30,10 @@ public abstract class Piece { // Abstract since there is not only one piece, the
         return this.pieceAlliance; // Returns the alliance of the piece when called upon
     }
 
+
+    public boolean isFirstMove() {
+        return this.isFirstMove;
+    }
     // Most important method in this class is calculating the legal moves of a piece
 
     // In summary using a set, this cannot have any duplicate entries within it and unordered
