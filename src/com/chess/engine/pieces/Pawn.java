@@ -93,4 +93,9 @@ public class Pawn extends Piece {
         }
         return Collections.unmodifiableList(legalMoves);
     }
+
+    @Override // Now has a specific ascii value fo the type of piece
+    public String toString() {
+        return PieceType.PAWN.toString();
+    }
 }

@@ -72,6 +72,11 @@ public class Knight extends Piece{ // Knight inherits the Piece class
         return Collections.unmodifiableList(legalMoves); // Cannot be changed after initialisation
     }
 
+    @Override // Now has a specific ascii value fo the type of piece
+    public String toString() {
+        return PieceType.KNIGHT.toString();
+    }
+
     // It turns out that when on the edges of the board, this notion breaks down and the moves are not legal
 
     // All edge cases ran into if the knight were sitting on the first column of the chess board

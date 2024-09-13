@@ -27,6 +27,37 @@ public class Board {
         this.gameBoard = createGameBoard(builder); // Access this method from the builder class
         this.whitePieces = calculateActivePieces(this.gameBoard, Alliance.WHITE); // For this game board, calculate the white pieces
         this.blackPieces = calculateActivePieces(this.gameBoard, Alliance.BLACK); // For this game board, calculate the black pieces
+
+        // Declare Local Variables
+        final Collection<Move> whiteStandardLegalMoves = calculateLegalMoves(this.whitePieces);
+        final Collection<Move> blackStandardLegalMoves = calculateLegalMoves(this.blackPieces);
+
+    }
+
+    // Outputs the board as an ascii table, conveniently
+    @Override // Overriding the base toString method , Prints out our board
+    public String toString() {
+        final StringBuilder builder = new StringBuilder(); // Instantiate string builder class
+        for (int i = 0; i < NUM_TILES; i++) {
+            final String tileText = this.gameBoard.get(i).toString();
+            builder.append(String.format("%3s", tileText));
+            if ((i+1) % NUM_TILES_PER_ROW == 0) {
+                builder.append("\n");
+            }
+
+        }
+        return builder.toString();
+    }
+
+    // *****************************************************************************************************************************
+    //                          Methods used to flesh out the white and the black player
+    private Collection<Move> calculateLegalMoves(Collection<Piece> Pieces) {
+        final List<Move> legalMoves = new ArrayList<>(); // Declare a list of legal moves
+        for (final Piece piece : Pieces) { // Loop through each piece
+            // This container holds all the legal moves on the board for every piece of the specified alliance
+            legalMoves.addAll(piece.calculateLegalMoves(this)); // Takes in a board which we're on so use the "this" pointer
+        }
+        return Collections.unmodifiableList(legalMoves);
     }
 
     private static Collection<Piece> calculateActivePieces(final List<Tile> gameBoard,
@@ -43,6 +74,8 @@ public class Board {
         }
         return Collections.unmodifiableList(activePieces); // Return an immutable list
     }
+
+    // *****************************************************************************************************************************
 
     public Tile getTile(final int tileCoordinate) {
         return gameBoard.get(tileCoordinate); // Getter for the tile at a specific position on the game board
@@ -120,6 +153,7 @@ public class Board {
         Alliance nextMoveMaker; // The Person to move, person whose turn it is o move on the given board
 
         public Builder() { // Expose the builder constructor as public
+            this.boardConfig = new HashMap<>();
         }
 
         public Builder setPiece(final Piece piece) { // Set the piece on the builder

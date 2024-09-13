@@ -78,6 +78,12 @@ public abstract class Tile { // Parent class of EmptyTile
 
         }
 
+        @Override
+        public String toString() {
+            // If black return as lowercase, if white return as upper case
+            return getPiece().getPieceAlliance().isBlack() ? getPiece().toString().toLowerCase() :
+                    getPiece().toString();
+        }
         // Since abstract, implement unimplemented methods and override
         @Override
         public boolean isTileOccupied() {
@@ -95,6 +101,11 @@ public abstract class Tile { // Parent class of EmptyTile
             super(coordinate);  // Since inheriting the methods from the tile class, the coordinate was already declared so
             // use super to access the super class
 
+        }
+
+        @Override
+        public String toString() { // For an empty tile, output this
+            return "-";
         }
 
         @Override // Since Method is abstract, must implement unimplemented methods

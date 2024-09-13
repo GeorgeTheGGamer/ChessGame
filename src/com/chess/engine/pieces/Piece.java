@@ -46,6 +46,28 @@ public abstract class Piece { // Abstract since there is not only one piece, the
     public abstract Collection<Move> calculateLegalMoves (final Board board);  // This will return a collection of moves, either a set or collection
 
 
+    public enum PieceType { // Enum for each piece type
+
+        // When the toString method is invoked on each piece we will delegate each piece type
+
+        PAWN("P"), // Giving ascii values for each piece type
+        KNIGHT("N"),
+        BISHOP("B"),
+        ROOK("R"),
+        QUEEN("Q"),
+        KING("K");
+        private String pieceName;
+
+        PieceType(final String pieceName) {
+            this.pieceName = pieceName;
+        }
+
+        @Override
+        public String toString() {
+            return this.pieceName;
+        }
+    }
+
 
 
 }

@@ -57,6 +57,11 @@ public class Bishop extends Piece {
         return Collections.unmodifiableList(legalMoves);
     }
 
+    @Override // Now has a specific ascii value fo the type of piece
+    public String toString() {
+        return PieceType.BISHOP.toString();
+    }
+
     // Edge cases to consider
 
     // When on the first column the -9 and positive 7 values fall apart

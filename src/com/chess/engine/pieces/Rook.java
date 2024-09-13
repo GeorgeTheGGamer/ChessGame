@@ -52,6 +52,11 @@ public class Rook extends Piece {
         return Collections.unmodifiableList(legalMoves);
     }
 
+    @Override // Now has a specific ascii value fo the type of piece
+    public String toString() {
+        return PieceType.ROOK.toString();
+    }
+
     // Edge cases to consider
 
     // When on the first column the -1 values fall apart
