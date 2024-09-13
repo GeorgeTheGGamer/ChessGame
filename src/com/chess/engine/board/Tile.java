@@ -45,6 +45,8 @@ public abstract class Tile { // Parent class of EmptyTile
          with that piece. If no piece is provided (piece == null), it returns one of the pre-created empty tiles from the
          EMPTY_TILES map.*/
 
+        // If the piece is not null, create a new occupied tile at the coordinate and its piece
+        // Otherwise create an empty tile that we retrieve from the empty tile cache
         return piece != null ? new OccupiedTile(tileCoordinate, piece) : EMPTY_TILES_CACHE.get(tileCoordinate);
     }
 

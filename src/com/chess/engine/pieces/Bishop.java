@@ -17,7 +17,7 @@ public class Bishop extends Piece {
     // There is a pattern with the bishops candidate move coordinates, -9,-7,7,9
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-9, -7, 7, 9}; // These are really vectors of moves and will loop through each of them
 
-    Bishop(int piecePosition, Alliance pieceAlliance) {
+    public Bishop(Alliance pieceAlliance, int piecePosition) {
         super(piecePosition, pieceAlliance);
     }
 

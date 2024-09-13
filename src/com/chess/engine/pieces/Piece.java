@@ -26,6 +26,10 @@ public abstract class Piece { // Abstract since there is not only one piece, the
 
     }
 
+    public int getPiecePosition() { // Getter method for Piece position, visible everywhere
+        return this.piecePosition;
+    }
+
     public Alliance getPieceAlliance() { // Getter method for the Alliance of this piece
         return this.pieceAlliance; // Returns the alliance of the piece when called upon
     }

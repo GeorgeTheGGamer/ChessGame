@@ -19,7 +19,7 @@ public class Knight extends Piece{ // Knight inherits the Piece class
     private final static int[] CANDIDATE_MOVE_COORDINATES = {-17,-15,-6,6,10,15,17}; // A knight at most on a move can have 8 moves
 
 
-    Knight(final int piecePosition, final Alliance alliance) {
+    public Knight(final Alliance alliance, final int piecePosition) {
         super(piecePosition,alliance);
     }
 
